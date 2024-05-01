@@ -22,7 +22,7 @@ jobs:
         python-version: "3.10"
     - name: Clone Repo
       run:
-        cd ga-ole-refresh
+        cd main.py
     - name: Run Python 3.10
       run:
         python main.py
