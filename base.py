@@ -1,5 +1,5 @@
 from random import choice, randint
-from math import round, floor
+# from math import round, floor
 import typeChart
 
 class Disk:
