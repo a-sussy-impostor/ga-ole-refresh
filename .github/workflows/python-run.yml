@@ -1,4 +1,4 @@
-name: Python application
+name: Python Host
 
 on:
   push:
@@ -20,7 +20,8 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - name: Run Python 3.10
+    - name: Clone Repo
       run:
         cd a-sussy-impostor/ga-ole-refresh
+    - name: Run Python 3.10
         python main.py
