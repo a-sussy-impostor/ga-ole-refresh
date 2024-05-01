@@ -24,4 +24,5 @@ jobs:
       run:
         cd a-sussy-impostor/ga-ole-refresh
     - name: Run Python 3.10
+      run:
         python main.py
