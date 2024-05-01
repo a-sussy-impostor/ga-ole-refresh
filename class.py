@@ -17,15 +17,15 @@ class Disk:
     self.z = ["Breakneck Blitz","All-Out Pummeling","Supersonic Skystrike","Acid Downpour","Tectonic Rage","Continental Crush","Savage Spin-Out","Never-Ending Nightmare","Corkscrew Crash","Inferno Overdrive","Hydro Vortex","Bloom Doom","Gigavolt Havoc","Shattered Psyche","Subzero Slammer","Devastating Drake","Black Hole Eclipse","Twinkle Tackle","Catastropika","Sinister Arrow Raid","Malicious Moonsault","Oceanic Operetta","Guardian of Alola","Soul-Stealing 7-Star Strike","Stoked Sparksurfer","Pulverizing Pancake","Extreme Evoboost","Genesis Supernova","10,000,000 Volt Thunderbolt","Light That Burns the Sky","Searing Sunraze Smash","Menacing Moonraze Maelstrom","Let's Snuggle Forever","Splintered Stormshards","Clangorous Soulblaze"].index(z)
     self.fuse = fuse # list
     del name, type, number, bst, move, star, energy, special, mega, z, fuse
-  def Attack(enemy,selfch = [1,1,1,1,1],enemych = [1,1,1,1,1]): # Stat changes: [Attack, Defense, Sp. Atk, Sp. Def, Spe, Crit]
-    if move[3] == "P":
+  def Attack(self, enemy,selfch = [1,1,1,1,1],enemych = [1,1,1,1,1]): # Stat changes: [Attack, Defense, Sp. Atk, Sp. Def, Spe, Crit]
+    if self.move[3] == "P":
       getbst = [1,2]
-    elif move[3] == "S":
+    elif self.move[3] == "S":
       getbst = [3,4]
     else:
       getbst = None
       
-    if move[3] != "N":
+    if self.move[3] != "N":
       stab = 1
       crit = 1
       item = 1
