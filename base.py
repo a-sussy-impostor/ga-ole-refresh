@@ -1,5 +1,5 @@
-from random import choice, randint
-# from math import round, floor
+from random import choice, randint, uniform
+from math import round
 import typeChart
 
 class Disk:
@@ -47,11 +47,11 @@ class Disk:
         attack = (((self.bst[getbst[0]]*2+31+252/4)*self.level)/100+5)*selfchnew
         defense = (((enemy.bst[getbst[1]]*2+31+252/4)*enemy.level)/100+5)*enemychnew
         powerBonus = choice([10,10,10,20,20,20,20,30,30,30,50])
-        damage = (((2*self.level)/250)*attack/defense*(self.move[2]+powerBonus)+2)*multi
+        damage = round((((2*self.level)/250)*attack/defense*(self.move[2]+powerBonus)+2)*multi*uniform(0.8, 1))
       else:
         attack = (((self.bst[getbst[0]]*2+31+252/4)*self.level)/100+5)*selfch[0]
         defense = (((enemy.bst[getbst[1]]*2+31+252/4)*enemy.level)/100+5)*enemych[1]
         powerBonus = choice([10,10,10,20,20,20,20,30,30,30,50])
-        damage = (((2*self.level)/250)*attack/defense*(self.move[2]+powerBonus)+2)*multi
+        damage = round((((2*self.level)/250)*attack/defense*(self.move[2]+powerBonus)+2)*multi*uniform(0.8, 1))
       return damage
       # work in progres
