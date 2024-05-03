@@ -20,7 +20,7 @@ class Disk:
       self.z = None
     self.fuse = fuse # list
     del name, type, number, bst, move, star, energy, special, mega, z, fuse
-  def Attack(self, enemy,selfch = [1,1,1,1,1],enemych = [1,1,1,1,1]): # Stat changes: [Attack, Defense, Sp. Atk, Sp. Def, Spe, Crit]
+  def Attack(self, enemy,selfch = [1,1,1,1,1,1],enemych = [1,1,1,1,1,1]): # Stat changes: [Attack, Defense, Sp. Atk, Sp. Def, Spe, Crit]
     if self.move[3] == "P":
       getbst = [1,2]
     elif self.move[3] == "S":
