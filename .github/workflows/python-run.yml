@@ -16,6 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install Dependecacies
+      run:
+        pip install colorama
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
