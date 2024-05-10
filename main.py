@@ -1,5 +1,6 @@
 from os import system as sys
 sys("pip3 install colorama")
+sys("pip3 install pickle")
 
 from base import *
 from colorama import Fore as fore
