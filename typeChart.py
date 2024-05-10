@@ -5,7 +5,9 @@ class Type():
     self.immune = immune
     del weak, resist, immune
 
-# create class types later
+tNormal = Type([tFighting],[],[tGhost])
+tFighting = Type([tFlying,tPsychic,tFairy],[tBug,tRock,tDark],[])
+tFlying = Type([tElectric,tIce,tRock],[tBug,tGrass,tFighting],[])
 
 def match(type1,type2):
   # dummy
