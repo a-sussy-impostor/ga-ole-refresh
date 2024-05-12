@@ -25,6 +25,14 @@ tPsychic = Type([tGhost,tDark,tBug],[tFighting,tPsychic],[])
 tDragon = Type([tDragon,tIce,tFairy],[tGrass,tFire,tWater,tElectric],[])
 tIce = Type([tFire,tRock,tSteel,tFighting],[tIce],[])
 
-def match(type1,type2):
-  # dummy
-  return 1
+def match(attackType,defenseType):
+  attackT = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][attackType]
+  defenseT = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][defenseType]
+  if attackT in defenseT.weak:
+    return 2
+  elif attackT in defenseT.resist:
+    return 0.5
+  elif attackT in defenseT.immune:
+    return 0
+  else:
+    return 1
