@@ -1,5 +1,6 @@
 from random import choice, randint, uniform
-import typeChart
+import typeChart, time, datetime
+from os import system as sys
 
 class Disk:
   def __init__(self, name, type, number, bst, move, star, energy , ability = None, special = None, mega = None, z = None, fuse = None):
@@ -89,3 +90,9 @@ class Disk:
     addEffect = choice([0,1,0,2]) # 1 = +1 defense / 2 = Opponent -12% HP
     return addEffect
     # work in progress
+
+def wait(sec): time.sleep(sec)
+def clear(): sys("clear")
+def enter():
+  _i = input()
+  del _i
