@@ -1,5 +1,5 @@
 from prerun import *
-
+sys("pip3 install pickle")
 from base import *
 
 testing = Disk("Pikachu","Electric",25,[35,55,40,50,50,90],["Thunderbolt","Electric",90,"S",None,None],2,1500)
