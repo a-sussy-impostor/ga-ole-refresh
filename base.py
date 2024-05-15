@@ -1,14 +1,16 @@
 from random import choice, randint, uniform
-import typeChart
+import typeChart, time, datetime
+from os import system as sys
 
 class Disk:
-  def __init__(self, name, type, number, bst, move, star, energy , special = None, mega = None, z = None, fuse = None):
+  def __init__(self, name, type, number, bst, move, star, energy , ability = None, special = None, mega = None, z = None, fuse = None):
     self.name = name
     self.type = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(type)
     self.number = number
     self.bst = bst
-    self.move = [move[0],["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(move[1]),move[2],move[3]] # [name, type, power, ps] # PS = P/S/N
+    self.move = [move[0],["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(move[1]),move[2],move[3],move[4],move[5]] # [name, type, power, ps, user stat change, target stat change] # PS = P/S/N
     self.star = star
+    self.ability = ability
     self.energy = energy
     self.special = special
     self.mega = mega
@@ -18,8 +20,35 @@ class Disk:
     else:
       self.z = None
     self.fuse = fuse # list
-    del name, type, number, bst, move, star, energy, special, mega, z, fuse
+    del name, type, number, bst, move, star, energy, special, mega, z, fuse, ability
   def Attack(self, enemy,selfch = [1,1,1,1,1,1],enemych = [1,1,1,1,1,1]): # Stat changes: [Attack, Defense, Sp. Atk, Sp. Def, Spe, Crit]
+    selfSC = [0,0,0,0,0,0]
+    enemySC = [0,0,0,0,0,0]
+    if self.move[4] != None:
+      contCheck = [1,1]
+      if self.ability == "Contrary":
+        contCheck[0] = -1
+      if enemy.ability == "Contrary":
+        contCheck[1] = -1
+      if enemy.ability == "Defiant":
+        if min(self.move[5]) < 0:
+          enemySC[0] += 2
+      if enemy.ability == "Competitive":
+        if min(self.move[5]) < 0:
+          enemySC[2] += 2
+      selfSC[0] += self.move[4][0] * contCheck[0]
+      selfSC[1] += self.move[4][1] * contCheck[0]
+      selfSC[2] += self.move[4][2] * contCheck[0]
+      selfSC[3] += self.move[4][3] * contCheck[0]
+      selfSC[4] += self.move[4][4] * contCheck[0]
+      selfSC[5] += self.move[4][5] * contCheck[0]
+      enemySC[0] += self.move[5][0] * contCheck[1]
+      enemySC[1] += self.move[5][1] * contCheck[1]
+      enemySC[2] += self.move[5][2] * contCheck[1]
+      enemySC[3] += self.move[5][3] * contCheck[1]
+      enemySC[4] += self.move[5][4] * contCheck[1]
+      enemySC[5] += self.move[5][5] * contCheck[1]
+      del contCheck
     if self.move[3] == "P":
       getbst = [1,2]
     elif self.move[3] == "S":
@@ -52,5 +81,18 @@ class Disk:
         defense = (((enemy.bst[getbst[1]]*2+31+252/4)*enemy.level)/100+5)*enemych[1]
         powerBonus = choice([10,10,10,20,20,20,20,30,30,30,50])
         damage = round((((2*self.level)/250)*attack/defense*(self.move[2]+powerBonus)+2)*multi*uniform(0.8, 1))
-      return damage
-      # work in progres
+      del attack, defense, powerBonus, multi, getbst, selfchnew, enemychnew, item, stab, crit
+      return [damage,selfSC,enemySC]
+    else:
+      return [None,selfSC,enemySC]
+    # still work in progress
+  def Defense(self,damage):
+    addEffect = choice([0,1,0,2]) # 1 = +1 defense / 2 = Opponent -12% HP
+    return addEffect
+    # work in progress
+
+def wait(sec): time.sleep(sec)
+def clear(): sys("clear")
+def enter():
+  _i = input()
+  del _i
