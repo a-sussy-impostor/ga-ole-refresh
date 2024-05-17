@@ -3,7 +3,7 @@ import typeChart, time, datetime
 from os import system as sys
 
 class Disk:
-  def __init__(self, name, type, number, bst, move, star, energy , ability = None, special = None, mega = None, z = None, fuse = None):
+  def __init__(self, name, type, number, bst, move, star, energy , capturedBall = None, ability = None, special = None, mega = None, z = None, fuse = None):
     self.name = name
     self.type = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(type)
     self.number = number
@@ -14,7 +14,7 @@ class Disk:
     self.energy = energy
     self.special = special
     self.mega = mega
-    self.level = self.energy/30 # hidden
+    self.level = round(self.energy/30) # hidden
     if z != None:
       self.z = ["Breakneck Blitz","All-Out Pummeling","Supersonic Skystrike","Acid Downpour","Tectonic Rage","Continental Crush","Savage Spin-Out","Never-Ending Nightmare","Corkscrew Crash","Inferno Overdrive","Hydro Vortex","Bloom Doom","Gigavolt Havoc","Shattered Psyche","Subzero Slammer","Devastating Drake","Black Hole Eclipse","Twinkle Tackle","Catastropika","Sinister Arrow Raid","Malicious Moonsault","Oceanic Operetta","Guardian of Alola","Soul-Stealing 7-Star Strike","Stoked Sparksurfer","Pulverizing Pancake","Extreme Evoboost","Genesis Supernova","10,000,000 Volt Thunderbolt","Light That Burns the Sky","Searing Sunraze Smash","Menacing Moonraze Maelstrom","Let's Snuggle Forever","Splintered Stormshards","Clangorous Soulblaze"].index(z)
     else:
