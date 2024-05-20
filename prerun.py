@@ -1,5 +1,5 @@
-from os import system as sys
-sys("pip install colorama")
+# from os import system as sys
+# sys("pip install colorama")
 from colorama import Fore as fore
 from colorama import Style as style
 from colorama import init as cInit
