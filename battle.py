@@ -1,6 +1,32 @@
 import logging
 from prerun import *
-from multiprocessing import Process
+from threading import Thread as thread
+
+import time
+
+# Initialize player's and NPC's integers
+enemyPow = [0,0]
+allyPow = [0,0]
+
+# Function to handle player's input
+def player_input():
+    global allyPow, running
+    while max(enemyPow[0],enemyPow[1]) < 100 and max(allyPow[0],allyPow[1]) < 100:
+        user_input = input()
+        allyPow[0] += 5
+        allyPow[1] += 5
+        print(f"Your allies' power are now: {allyPow.join(", ")}")
+
+# Function to simulate NPC's integer increase
+def npc_action():
+    global enemyPow
+    while max(enemyPow[0],enemyPow[1]) < 100 and max(allyPow[0],allyPow[1]) < 100:
+        enemyPow[0] += 10
+        print(f"Enemies' power are now: {enemyPow.join(", ")}")
+        time.sleep(1)  # Delay for 1 second
+
+player_thread = threading.Thread(target=player_input)
+npc_thread = threading.Thread(target=npc_action)
 
 def cheerUp():
   global aldata
@@ -31,7 +57,7 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
   enMHP = [(round(enemies[0].bst[0]*2+31+252/4)*enemies[0].level)/100+10+enemies[0].level,(round(enemies[1].bst[0]*2+31+252/4)*enemies[1].level)/100+10+enemies[1].level]
   endata = [[[0,0,0,0,0,0],100,(round(enemies[0].bst[0]*2+31+252/4)*enemies[0].level)/100+10+enemies[0].level],[[0,0,0,0,0,0],50,(round(enemies[1].bst[0]*2+31+252/4)*enemies[1].level)/100+10+enemies[1].level]] # [[stat,spirit,hp]...]
   print(f"{cyan}A battle between {yellow}{allies[0].name}, {allies[1].name} and {enemies[0].name}, {enemies[1].name} {cyan}has started!")
-  logging.info("Battle between {yellow}{allies[0].name}, {allies[1].name} and {enemies[0].name}, {enemies[1].name} has started.")
+  logging.info(f"Battle between {yellow}{allies[0].name}, {allies[1].name} and {enemies[0].name}, {enemies[1].name} has started.")
   for x in range(countdown):
     status = []
     for y in allies:
@@ -51,6 +77,14 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
       print(f"5. ({status[4]}) {allies[4].name} - {getPercent(aldata[4][2]/hp[4])} HP ({aldata[4][2]}/{hp[4]}); Fighting Spirit: {aldata[4][1]}%")
     enemyPow = [50,50]
     allyPow = [randint(1,30),randint(1,30)]
-    while enemyPow < 100 and max(allyPow[0],allyPow[1]) < 100:
+    plThread = thread(target=player_input)
+    enThread = thread(target=enemy_input)
+    plThread.start()
+    enThread.start()
+    plThread.join()
+    enThread.join()
+    while max(enemyPow[0],enemyPow[1]) < 100 and max(allyPow[0],allyPow[1]) < 100:
       pass
+    plThread.terminate()
+    enThread.terminate()
     # work in progress
