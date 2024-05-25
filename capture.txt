@@ -1,0 +1,26 @@
+from random import randint, choice
+from datetime import datetime
+# from shop import *
+
+balldata = {
+  "brokenball": [0.1,True],
+  "rustedball": [0.5,True],
+  "pokeball": [1,True],
+  "greatball": [1.5,True],
+  "ultraball": [2,True],
+  "masterball": [255,True]
+  "quickball": [5,turn==1,[1,True]],
+  "duskball": [3,time.hour>17 or time.hour<7,[1,True]]
+  "fastball": [4,turn<=3,[1,True]]
+  "levelball": [8,enemies[_use]]
+
+def catchcalc():
+  pass
+
+def capture(allies,enemies,mode,turn,time = datetime.now(),offguard=False):
+  ball = None
+  if mode == 1:
+    ball = "Master Ball"
+  else:
+    print("Catching Time!")
+    ball = choice([
