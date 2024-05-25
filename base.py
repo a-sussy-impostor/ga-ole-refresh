@@ -4,7 +4,7 @@ import typeChart, time, datetime
 from os import system as sys
 
 class Disk:
-  def __init__(self, name, type, number, bst, move, star, energy , capturedBall = None, ability = None, special = None, mega = None, z = None, fuse = None, shiny = False, lucky = False):
+  def __init__(self, name, type, number, bst, move, star, energy , catchrate = 5, capturedBall = None, ability = None, special = None, mega = None, z = None, fuse = None, shiny = False, lucky = False):
     self.name = name
     self.type = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(type)
     self.number = number
