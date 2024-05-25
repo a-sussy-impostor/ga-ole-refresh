@@ -5,10 +5,10 @@ Poke Ball - 1x Catch Rate (₽200)
 Great Ball - 1.5x Catch Rate (₽500)
 Ultra Ball - 2x Catch Rate (₽800)
 Master Ball - 255x Catch Rate (Guarantee Success) (₽19999)
-Quick Ball - 5x Catch Rate if used on first turn (₽1500)
 
 ===Paid Balls===
 (They can only be obtained by purchase and events)
+Quick Ball - 7x Catch Rate if used on first turn (₽1500)
 Dusk Ball - 3x Catch Rate if real time is 18:00~06:59 (₽1000)
 Fast Ball - 4x Catch Rate if used at Turn 3 or earlier (₽1200)
 Level Ball - Catch Rate varies based on stars (1 star: 8x; 2 star: 4x; 3 star: 2x; 4+ stars: 1x) (₽1000)
@@ -21,6 +21,7 @@ Dream Ball - 5x Catch Rate if real time is 01:00~04:59 (₽1200)
 Beast Ball - 5x Catch Rate on Ultra Beasts; 0.1x on everything else (₽2000)
 Strange Ball - 50% Catch Chance (Bypasses the formula, basically a coin flip) (₽9999)
 Net Ball - 3x Catch Rate if opponent is Bug or Water Type, 6x if both, and 8x if target is Suicune. (₽1200)
+
 
 ===Event-Only Balls===
 Sport Ball - 4x Catch Rate on Bug Type; 0.1x on all pokemon after event period
