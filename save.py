@@ -16,7 +16,7 @@ def encrypt(list):
 # Decrypt list
 def decrypt(json):
   fernet = Fernet(key)
-  decrypted_json = fernet.decrypt(ciphertext).decode()
+  decrypted_json = fernet.decrypt(json).decode()
   return json.loads(decrypted_json)
 
 
