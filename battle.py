@@ -169,7 +169,7 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
     if endata[0][2] <= 0:
        print(f"Your enemy, {enemies[1].name} has fainted! Catch chance!")
        catchchance[1] = True
-    if catchchance == [True,True]
+    if catchchance == [True,True]:
        print("Both enemies have fainted! Catch time!")
        pass
        # work in progress
