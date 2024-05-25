@@ -15,30 +15,31 @@ def player_input():
         user_input = input()
         allyPow[0] += 5
         allyPow[1] += 5
-        print(f"Your allies' power are now: {allyPow.join(", ")}")
+        print(f"Your allies' power are now: {allyPow.join(', ')}")
 
 # Function to simulate NPC's integer increase
 def npc_action():
     global enemyPow
     while max(enemyPow[0],enemyPow[1]) < 100 and max(allyPow[0],allyPow[1]) < 100:
         enemyPow[0] += 10
-        print(f"Enemies' power are now: {enemyPow.join(", ")}")
+        print(f"Enemies' power are now: {enemyPow.join(', ')}")
         time.sleep(1)  # Delay for 1 second
 
 player_thread = threading.Thread(target=player_input)
 npc_thread = threading.Thread(target=npc_action)
 
-def cheerUp():
-  global aldata
-  temp1 = input()
-  aldata[0] = aldata[0]
+# def cheerUp():
+  # global aldata
+  # temp1 = input()
+  # aldata[0] = aldata[0]
   # to be continued
 
 def getPercent(num):
-  return str(floor(num*100))+"%"
+  return str(floor(num*1000)/10)+"%"
+    
 def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = None):
   try:
-    if len(allies) > 4 and not extra:
+    if (len(allies) > 4 and not extra) or (len(allies) > 5):
       logging.warning("Too many allies")
   except TypeError:
     logging.error("Incorrect input for 'extra' argument in battle()")
@@ -48,7 +49,9 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
   for j in allies:
     if allies[j].name != "Shedinja":
       hp[j] = (round(allies[j].bst[0]*2+31+252/4)*allies[j].level)/100+10+allies[j].level
-  aldata = [[[0,0,0,0,0,0],50,hp[0]],[[0,0,0,0,0,0],50,hp[1]],[[0,0,0,0,0,0],50,hp[2]],[[0,0,0,0,0,0],50,hp[3]]]
+    else:
+      hp[j] = 1
+  aldata = [[[0,0,0,0,0,0],50,hp[0]],[[0,0,0,0,0,0],50,hp[1]],[[0,0,0,0,0,0],50,hp[2]],[[0,0,0,0,0,0],50,hp[3]]] # [[[stat],spirit,hp]...
   try:
     if extra:
       aldata[2] += [[0,0,0,0,0,0],50,maxHP[4]]
@@ -87,4 +90,61 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
       pass
     plThread.terminate()
     enThread.terminate()
-    # work in progress
+    if max(enemyPow[0],enemyPow[1]) >= 100:
+       _defender = choice(allies)
+       if enemyPow[0] >= 100:
+           _ret = enemies[0].Attack(_defender)
+           if _ret[1] != [0,0,0,0,0,0]:
+              for _k in _ret[1]:
+                  endata[0][0][_k] += _ret[1][_k]
+           if _ret[2] != [0,0,0,0,0,0]:
+              for _l in _ret[2]:
+                  aldata[allies.index(_defender)][0][_l] += _ret[2][_l]
+       else:
+           _ret = enemies[1].Attack(_defender)
+           if _ret[1] != [0,0,0,0,0,0]:
+              for _k in _ret[1]:
+                  endata[1][0][_k] += _ret[1][_k]
+           if _ret[2] != [0,0,0,0,0,0]:
+              for _l in _ret[2]:
+                  aldata[allies.index(_defender)][0][_l] += _ret[2][_l]
+       speEffect = _defender.Defense(_dmg)
+       if specEffect == 2:
+           endata[0][2] *= 0.88
+           endata[1][2] *= 0.88
+           endata[0][2] = round(endata[0][2])
+           endata[1][2] = round(endata[1][2])
+       elif specEffect == 1:
+           aldata[allies.index(_defender)][0][1] += 1
+       aldata[allies.index(_defender)][2] -= _dmg
+    elif max(allyPow[0],allyPow[1]) >= 100:
+       _defender = choice(enemies)
+       if allyPow[0] >= 100:
+           _ret = allies[currentSelf[0]].Attack(_defender)
+           if _ret[1] != [0,0,0,0,0,0]:
+              for _m in _ret[1]:
+                  aldata[currentSelf[0]][0][_m] += _ret[1][_m]
+           if _ret[2] != [0,0,0,0,0,0]:
+              for _n in _ret[2]:
+                  endata[enemies.index(_defender)][0][_n] += _ret[2][_n]
+       else:
+           _ret = allies[currentSelf[1]].Attack(_defender)
+           if _ret[1] != [0,0,0,0,0,0]:
+              for _m in _ret[1]:
+                  aldata[currentSelf[1]][0][_m] += _ret[1][_m]
+           if _ret[2] != [0,0,0,0,0,0]:
+              for _n in _ret[2]:
+                  endata[enemies.index(_defender)][0][_n] += _ret[2][_n]
+       speEffect = _defender.Defense(_dmg)
+       if specEffect == 2:
+           aldata[currentSelf[0]][2] *= 0.88
+           aldata[currentSelf[1]][2] *= 0.88
+           aldata[currentSelf[0]][2] = round(endata[0][2])
+           aldata[currentSelf[1]][2] = round(endata[1][2])
+       elif specEffect == 1:
+           endata[enemies.index(_defender)][0][1] += 1
+       endata[enemies.index(_defender)][2] -= _dmg
+    else:
+        logging.error("Accidentally jumped out of loop")
+        return -1
+    # still work in progress
