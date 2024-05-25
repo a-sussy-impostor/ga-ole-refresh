@@ -79,9 +79,10 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
     if extra:
       print(f"5. ({status[4]}) {allies[4].name} - {getPercent(aldata[4][2]/hp[4])} HP ({aldata[4][2]}/{hp[4]}); Fighting Spirit: {aldata[4][1]}%")
     enemyPow = [50,50]
+    catchchance = [False,False]
     allyPow = [randint(1,30),randint(1,30)]
     plThread = thread(target=player_input)
-    enThread = thread(target=enemy_input)
+    enThread = thread(target=npc_action)
     plThread.start()
     enThread.start()
     plThread.join()
@@ -90,6 +91,7 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
       pass
     plThread.terminate()
     enThread.terminate()
+    # enemy attacks
     if max(enemyPow[0],enemyPow[1]) >= 100:
        _defender = choice(allies)
        if enemyPow[0] >= 100:
@@ -117,7 +119,9 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
        elif specEffect == 1:
            aldata[allies.index(_defender)][0][1] += 1
        aldata[allies.index(_defender)][2] -= _dmg
+       del _defender, _dmg, _ret, _specEffect
     elif max(allyPow[0],allyPow[1]) >= 100:
+       # ally attacks
        _defender = choice(enemies)
        if allyPow[0] >= 100:
            _ret = allies[currentSelf[0]].Attack(_defender)
@@ -144,7 +148,34 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
        elif specEffect == 1:
            endata[enemies.index(_defender)][0][1] += 1
        endata[enemies.index(_defender)][2] -= _dmg
+       del _defender, _dmg, _ret, _specEffect
     else:
         logging.error("Accidentally jumped out of loop")
         return -1
-    # still work in progress
+    clear()
+    if aldata[currentSelf[0]][2] <= 0:
+       print("Oh no! Your 1st Pokemon has fainted! Replace with new pokemon:")
+       _replica = int(input())
+       currentSelf[0] = _replica
+       print(f"You sent out {allies[currentSelf[0]].name}!")
+    if aldata[currentSelf[1]][2] <= 0:
+       print("Oh no! Your 2nd Pokemon has fainted! Replace with new pokemon:")
+       _replica = int(input())
+       currentSelf[1] = _replica
+       print(f"You sent out {allies[currentSelf[1]].name}!")
+    if endata[0][2] <= 0:
+       print(f"Your enemy, {enemies[0].name} has fainted! Catch chance!")
+       catchchance[0] = True
+    if endata[0][2] <= 0:
+       print(f"Your enemy, {enemies[1].name} has fainted! Catch chance!")
+       catchchance[1] = True
+    if catchchance == [True,True]
+       print("Both enemies have fainted! Catch time!")
+       pass
+       # work in progress
+    elif allies[0][2] <= 0 and allies[1][2] <= 0 and allies[2][2] <= 0 and allies[3][2] <= 0:
+       if extra and allies[4][2] > 0:
+          pass
+       else:
+          print("All of your pokemon has fainted!")
+          # not completed yet
