@@ -1,0 +1,6 @@
+==Permanent Variables==
+Pokemon Owned;
+Pokedollar (₽);
+Pokedex unlocked;
+Achievements;
+Bag Items;
