@@ -1,11 +1,31 @@
 import pickle
+import json
+from cryptography.fernet import Fernet
+from os import environ
+
+# Generate passkeys
+key = Fernet.generate_key()
+environ['saveKey'] = key.decode()
+
+# Encrypt list
+def encrypt(list):
+  list_json = json.dumps(list)
+  fernet = Fernet(key)
+  return fernet.encrypt(list_json.encode())
+
+# Decrypt list
+def decrypt(json):
+  fernet = Fernet(key)
+  decrypted_json = fernet.decrypt(ciphertext).decode()
+  return json.loads(decrypted_json)
+
 
 def save(data):
   with open("savedata.pk","wb") as f:
-    pickle.dump(data)
+    pickle.dump(encrypt(data))
   # del f,g
 
 def load():
   with open("savedata.pk","rb") as f:
-    return pickle.load(f.read())
+    return decrypt(pickle.load(f))
   # del f
