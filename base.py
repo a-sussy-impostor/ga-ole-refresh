@@ -1,4 +1,5 @@
 from random import choice, randint, uniform
+from math import floor, ceil, round
 import typeChart, time, datetime
 from os import system as sys
 
@@ -87,8 +88,11 @@ class Disk:
       return [None,selfSC,enemySC]
     # still work in progress
   def Defense(self,damage):
-    addEffect = choice([0,1,0,2]) # 1 = +1 defense / 2 = Opponent -12% HP
-    return addEffect
+    if damage != None:   
+      addEffect = choice([0,1,0,2]) # 1 = +1 defense / 2 = Opponent -12% HP
+      return addEffect
+    else:
+      return None
     # work in progress
 
 def wait(sec): time.sleep(sec)
