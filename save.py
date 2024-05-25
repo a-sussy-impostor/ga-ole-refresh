@@ -1,18 +1,11 @@
 import pickle
 
-def save(key,data):
-  with open("savedata.pk","rb") as f:
-    g = pickle.load(f)
-  g[key] = data
+def save(data):
   with open("savedata.pk","wb") as f:
-    pickle.dump(g)
+    pickle.dump(data)
   # del f,g
 
-def load(key):
+def load():
   with open("savedata.pk","rb") as f:
-    pickle.load(f)
+    return pickle.load(f.read())
   # del f
-  try:
-    return pickle[key]
-  except:
-    return
