@@ -2,7 +2,7 @@ from random import randint, choice, choices
 from datetime import datetime
 from prerun import *
 from load import playerData, serverData
-from save import save
+import save 
 
 # playerdata format: [pokemon, bag, pokedex, achievements, other stats...
   
