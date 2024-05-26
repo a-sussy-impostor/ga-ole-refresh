@@ -27,7 +27,7 @@ def shop(pokedollar):
   print()
   print("$ Lottery $")
   print("Coming very soon")
-  while _vinput = False:
+  while _vinput == False:
     buying = input("What would you like to buy? Enter number: ")
     if int(buying) in range(1,20):
       _vinput = True
