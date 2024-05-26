@@ -4,8 +4,12 @@ from cryptography.fernet import Fernet
 from os import environ
 
 # Generate passkeys
-key = Fernet.generate_key()
-environ['saveKey'] = key.decode()
+if not 'savekey' in environ:
+  key = Fernet.generate_key()
+  environ['saveKey'] = key.decode()
+else:
+  key = environ['saveKey'].encode()
+
 
 # Encrypt list
 def encrypt(list):
