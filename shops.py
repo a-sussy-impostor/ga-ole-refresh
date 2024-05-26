@@ -1,3 +1,5 @@
+from prerun import *
+
 def shop(pokedollar):
   print("~ Shop ~")
   print("Welcome to the shop! You can buy poke balls and held items (coming soon). You can also play the lottery.")
@@ -27,6 +29,7 @@ def shop(pokedollar):
   print()
   print("$ Lottery $")
   print("Coming very soon")
+  _vinput = False
   while _vinput == False:
     buying = input("What would you like to buy? Enter number: ")
     if int(buying) in range(1,20):
