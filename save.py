@@ -2,6 +2,7 @@ import pickle
 import json
 from cryptography.fernet import Fernet
 from os import environ
+import logging
 
 devmode = False
 
