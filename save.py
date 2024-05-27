@@ -26,7 +26,7 @@ def decrypt(json):
   return json.loads(decrypted_json)
 
 
-def save(data)
+def save(data):
   global devmode
   if not devmode:
     with open("savedata.pk","wb") as f:
