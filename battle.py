@@ -1,7 +1,7 @@
 import logging
 from prerun import *
 from threading import Thread as thread
-
+from capture import *
 import time
 
 # Initialize player's and NPC's integers
@@ -171,11 +171,11 @@ def battle(allies,enemies,extra=False,countdown = 8,bossLevel = None,support = N
        catchchance[1] = True
     if catchchance == [True,True]:
        print("Both enemies have fainted! Catch time!")
-       pass
-       # work in progress
+       capture([allies[currentSelf[0]],allies[currentSelf[1]]],enemies,0,countdown - x)
+       # maybe work in progress?
     elif allies[0][2] <= 0 and allies[1][2] <= 0 and allies[2][2] <= 0 and allies[3][2] <= 0:
        if extra and allies[4][2] > 0:
           pass
        else:
           print("All of your pokemon has fainted!")
-          # not completed yet
+          print("Catch failed!")
