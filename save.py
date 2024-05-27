@@ -1,4 +1,5 @@
 import pickle
+import logging
 
 def save(key,data):
   with open("savedata.pk","rb") as f:
