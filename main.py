@@ -67,6 +67,7 @@ while True:
       match action:
         case '1':
           # wip
+          pass
         case '2':
           print("Coming Soon!")
         case '3':
