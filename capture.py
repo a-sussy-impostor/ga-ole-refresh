@@ -10,16 +10,18 @@ import save
 def bagball(bag):
   print("~ Owned Pokeballs ~")
   for _o in bag[0]:
-    print(f"{(_o+1)}. {bag[0][_o][2]}{bag[0][_o][0]}{cReset} - {bag[0][_o][1]}")
+    print(f"{(_o+1)}. {bag.values()[_o]}x {bag.keys()[_o]}")
   while True:
     _p = input("Poke Ball to use: ")
-    if any(_p in inner_list for inner_list in bag[0]):
+    if _p in bag.keys():
+      bag[_p] -= 1
       break
     else:
       print("Invalid input")
   while True:
     _r = input("Poke Ball to use: ")
-    if any(_r in inner_list for inner_list in bag[0]):
+    if _r in bag.keys():
+      bag[_r] -= 1
       break
     else:
       print("Invalid input")
