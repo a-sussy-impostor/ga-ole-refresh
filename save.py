@@ -3,6 +3,8 @@ import json
 from cryptography.fernet import Fernet
 from os import environ
 
+devmode = False
+
 # Generate passkeys
 if not 'savekey' in environ:
   key = Fernet.generate_key()
@@ -24,9 +26,13 @@ def decrypt(json):
   return json.loads(decrypted_json)
 
 
-def save(data):
-  with open("savedata.pk","wb") as f:
-    pickle.dump(encrypt(data))
+def save(data)
+  global devmode
+  if not devmode:
+    with open("savedata.pk","wb") as f:
+      pickle.dump(encrypt(data))
+  else:
+    logging.info("Saving disabled due to developer mode ON")
   # del f,g
 
 def load():
