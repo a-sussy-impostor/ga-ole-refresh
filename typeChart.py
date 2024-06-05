@@ -27,6 +27,7 @@ tIce = Type([tFire,tRock,tSteel,tFighting],[tIce],[])
 
 def match(attackType,defenseType):
   attackT = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][attackType]
+  defenseT = []
   defenseT[0] = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][defenseType]
   if len(defenseT) > 1:
     defenseT[1] = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][defenseType]
