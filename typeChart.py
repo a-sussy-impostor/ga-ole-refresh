@@ -27,12 +27,27 @@ tIce = Type([tFire,tRock,tSteel,tFighting],[tIce],[])
 
 def match(attackType,defenseType):
   attackT = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][attackType]
-  defenseT = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][defenseType]
-  if attackT in defenseT.weak:
-    return 2
-  elif attackT in defenseT.resist:
-    return 0.5
-  elif attackT in defenseT.immune:
-    return 0
+  defenseT[0] = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][defenseType]
+  if len(defenseT) > 1:
+    defenseT[1] = [tNormal,tFighting,tFlying,tBug,tGrass,tFire,tWater,tElectric,tGround,tRock,tSteel,tPoison,tGhost,tDark,tFairy,tPsychic,tDragon,tIce][defenseType]
+  totalmulti = 1
+  if attackT in defenseT[0].weak:
+    totalmulti *= 2
+  elif attackT in defenseT[0].resist:
+    totalmulti *= 0.5
+  elif attackT in defenseT[0].immune:
+    totalmulti *= 0
   else:
-    return 1
+    totalmulti *= 1
+    
+  if len(defenseT) > 1:
+   if attackT in defenseT[1].weak:
+    totalmulti *= 2
+   elif attackT in defenseT[1].resist:
+    totalmulti *= 0.5
+   elif attackT in defenseT[1].immune:
+    totalmulti *= 0
+   else:
+    totalmulti *= 1
+  return totalmulti
+
