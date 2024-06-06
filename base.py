@@ -9,7 +9,7 @@ class Disk:
     self.type = ["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(type)
     self.number = number
     self.bst = bst
-    self.move = [move[0],["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(move[1]),move[2],move[3],move[4],move[5]] # [name, type, power, ps, user stat change, target stat change] # PS = P/S/N
+    self.move = [move[0],["Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"].index(move[1]),move[2],move[3],move[4],move[5]] # [name, type, power, ps, user stat change, target stat change, critratio] # PS = P/S/N
     self.star = star
     self.ability = ability
     self.energy = energy
@@ -67,7 +67,7 @@ class Disk:
       enemychnew = None
       if self.move[1] == self.type:
         stab *= 1.5
-      if randint(1,16) >= 16/selfch[5]:
+      if randint(1,16) >= 16/(selfch[5]+move[6]):
         crit *= 1.5
         if selfch[(getbst[0] - 1)] < 1:
           selfchnew = 1
