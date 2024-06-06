@@ -67,7 +67,7 @@ class Disk:
       enemychnew = None
       if self.move[1] == self.type:
         stab *= 1.5
-      if randint(1,16) >= 16/(selfch[5]+move[6]):
+      if randint(1,16) >= 16/(selfch[5]+self.move[6]):
         crit *= 1.5
         if selfch[(getbst[0] - 1)] < 1:
           selfchnew = 1
