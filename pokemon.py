@@ -39,8 +39,25 @@ pikachu2 = Disk("Pikachu",["Electric"],25,[45,60,45,70,55,95],["Spark","Electric
 pikachu3 = Disk("Pikachu",["Electric"],25,[50,70,50,75,65,100],["Thunderbolt","Electric",90,"S",None,None,0],3,2400)
 pikachu4 = Disk("Pikachu",["Electric"],25,[55,75,55,85,70,100],["Thunder","Electric",110,"S",None,None,0],4,2860)
 pikachu4s = Disk("Pikachu",["Electric"],25,[60,80,60,90,75,105],["Thunderbolt","Electric",90,"S",None,None,0],4,2900)
-pikachu5s = Disk("Pikachu",["Electric"],25,[70,90,60,100,80,110],["Thunderbolt","Electric",90,"S",None,None,0],5,3270,z="10,000,000 Volt Thunderbolt")
+pikachu5s = Disk("Pikachu",["Electric"],25,[70,90,60,100,80,110],["Thunderbolt","Electric",90,"S",None,None,0],5,3270,special="ss",z="10,000,000 Volt Thunderbolt")
 raichu2 = Disk("Raichu",["Electric"],26,[60,90,55,90,80,110],["Thunder Punch","Electric",75,"P",None,None,0],2,2050)
 raichu3 = Disk("Raichu",["Electric"],26,[60,90,55,90,80,110],["Thunder","Electric",110,"P",None,None,0],3,2560)
 
-# 1-26 almost complete; 27-151 in progress
+sandshrew1 = Disk("Sandshrew",["Ground"],27,[50,75,85,20,30,40],["Rapid Spin","Normal",50,"P",[0,0,0,0,1,0],None,0],1,1630)
+sandshrew1a = Disk("Sandshrew-Alola",["Ice","Steel"],27,[50,75,90,10,35,40],["Powdered Snow","Ice",40,"S",None,None,0],1,1630)
+sandslash2 = Disk("Sandslash",["Ground"],28,[75,100,110,45,55,65],["Bulldoze","Ground",60,"P",None,[0,0,0,0,-1,0],0],2,2120)
+sandslash2a = Disk("Sandslash-Alola",["Ice","Steel"],28,[75,100,120,25,65,65],["Iron Head","Steel",80,"P",None,None,0],2,2120)
+sandslash3 = Disk("Sandslash",["Ground"],28,[75,100,110,45,55,65],["Earthquake","Ground",100,"P",None,None,0],3,2970)
+sandslash3a = Disk("Sandslash-Alola",["Ice","Steel"],28,[75,100,120,25,65,65],["Icicle Crash","Ice",85,"P",None,None,0],3,2970)
+
+# skip nido-family
+
+clefairy1 = Disk("Clefairy",["Fairy"],35,[70,45,48,60,65,35],["Disarming Voice","Fairy",40,"S",None,None,0],1,1380)
+clefable2 = Disk("Clefable",["Fairy"],35,[95,90,73,95,90,60],["Swift","Normal",60,"S",None,None,0],2,1970)
+clefable3 = Disk("Clefable",["Fairy"],35,[95,90,73,95,90,60],["Moonblast","Fairy",95,"S",None,None,0],3,2650)
+
+vulpix1 = Disk("Vulpix",["Fire"],37,[38,41,40,50,65,65],["Fire Spin","Fire",35,"S",None,None,0],1,1400)
+ninetails2 = Disk("Ninetails",["Fire"],37,[38,41,40,50,65,65],["Fire Spin","Fire",35,"S",None,None,0],1,1400)
+# ninetails incomplete: bst, alolan form, star, energy, move
+
+# 1-38 almost complete; 39-151 in progress
