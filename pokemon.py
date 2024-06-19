@@ -57,7 +57,13 @@ clefable2 = Disk("Clefable",["Fairy"],35,[95,90,73,95,90,60],["Swift","Normal",6
 clefable3 = Disk("Clefable",["Fairy"],35,[95,90,73,95,90,60],["Moonblast","Fairy",95,"S",None,None,0],3,2650)
 
 vulpix1 = Disk("Vulpix",["Fire"],37,[38,41,40,50,65,65],["Fire Spin","Fire",35,"S",None,None,0],1,1400)
-ninetails2 = Disk("Ninetails",["Fire"],37,[38,41,40,50,65,65],["Fire Spin","Fire",35,"S",None,None,0],1,1400)
-# ninetails incomplete: bst, alolan form, star, energy, move
+vulpix1a = Disk("Vulpix",["Ice","Fairy"],37,[38,41,40,50,65,65],["Powdered Snow","Ice",40,"S",None,None,0],1,1400)
+ninetails2 = Disk("Ninetails",["Fire"],38,[73,76,75,81,100,100],["Incinerate","Fire",60,"S",None,None,0],2,2080)
+ninetails2a = Disk("Ninetails",["Ice","Fairy"],38,[73,67,75,81,100,109],["Aurora Beam","Ice",60,"S",None,None,0],2,2080)
+ninetails3 = Disk("Ninetails",["Fire"],38,[73,76,75,81,100,100],["Flamethrower","Fire",90,"S",None,None,0],3,2870)
+ninetails3a = Disk("Ninetails",["Ice","Fairy"],38,[73,67,75,81,100,109],["Ice Beam","Ice",90,"S",None,None,0],3,2870)
 
-# 1-38 almost complete; 39-151 in progress
+jigglypuff1 = Disk("Jigglypuff",["Normal","Fairy"],39,[115,45,20,45,20,25],["Pound","Normal",40,"P",None,None,0],1,1300)
+wigglytuff2 = Disk("Wigglytuff",["Normal","Fairy"],40,[140,70,40,85,50,45],["Covet","Normal",60,"P",None,None,0],2,1950)
+
+# 1-40 almost complete; 41-151 in progress
